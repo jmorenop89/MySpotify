@@ -35,5 +35,7 @@ Route::group(['prefix' => 'artista'], function () {
     Route::get('/',['as'=>'artista.index','uses'=>'Admin\ArtistaController@index']);
     Route::get('crear',['as'=>'artista.create','uses'=>'Admin\ArtistaController@create']);
     Route::post('crear',['as'=>'artista.store','uses'=>'Admin\ArtistaController@store']);
+    Route::get('editar/{id}',['as'=>'artista.edit','uses'=>'Admin\ArtistaController@edit']);
+    Route::post('editar/{id}',['as'=>'artista.update','uses'=>'Admin\ArtistaController@update']);
 
 });

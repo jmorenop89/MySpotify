@@ -29,12 +29,13 @@
                     <td>{{ $object->apellido }}</td>
                     <td>{{ $object->nacionalidad }}</td>
                     <td>
-                        <a href="">Editar</a>
-                        <a href="">Elminar</a>
+                        <a href="{{ route('artista.edit',$object->id) }}">Editar</a>
+                        <a href="">Eliminar</a>
                     </td>
                 </tr>
            @endforeach
             </tbody>
         </table>
+        {{ $objects->render() }}
     </div>
 @endsection

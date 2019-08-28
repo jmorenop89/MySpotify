@@ -10,7 +10,7 @@ class ArtistaController extends Controller
 {
     public function index(){
         // select * from artista
-        $objects = Artista::all();
+        $objects = Artista::paginate(4);
         return view('artista.index',compact('objects'));
     }
 
@@ -20,8 +20,20 @@ class ArtistaController extends Controller
 
     public function store(Request $request){
         $data = $request->all();
-        //dd($data);
         $obj = Artista::create($data);
-        dd($obj);
+        return redirect()->route('artista.index');
+    }
+
+    public function edit($id){
+        $object = Artista::find($id);
+        #dd($object);
+        return view('artista.edit',compact('object'));
+    }
+
+    public function update(Request $request,$id){
+        $object = Artista::find($id);
+        $data = $request->all();
+        $object->update($data);
+        return redirect()->route('artista.index');
     }
 }
