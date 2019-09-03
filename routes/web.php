@@ -30,12 +30,13 @@ Route::post('registrar',['as'=>'register','uses'=>'Auth\RegisterController@regis
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::group(['prefix' => 'artista'], function () {
+// 'middleware' => ['auth','filtra'] => a nivel rutas (grupo de rutas)
+Route::group(['prefix' => 'artista', 'middleware' => 'auth'], function () {
     
     Route::get('/',['as'=>'artista.index','uses'=>'Admin\ArtistaController@index']);
     Route::get('crear',['as'=>'artista.create','uses'=>'Admin\ArtistaController@create']);
     Route::post('crear',['as'=>'artista.store','uses'=>'Admin\ArtistaController@store']);
     Route::get('editar/{id}',['as'=>'artista.edit','uses'=>'Admin\ArtistaController@edit']);
     Route::post('editar/{id}',['as'=>'artista.update','uses'=>'Admin\ArtistaController@update']);
-
 });
+

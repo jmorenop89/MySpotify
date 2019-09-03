@@ -8,6 +8,11 @@ use App\Http\Controllers\Controller;
 
 class ArtistaController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('filtra');
+    }
+
     public function index(){
         // select * from artista
         $objects = Artista::paginate(4);
